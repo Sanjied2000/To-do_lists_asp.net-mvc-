@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+    @*Font*@
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+
+
+
+</head>
+<body style="padding-top: 0px; font-family: 'Ubuntu', sans-serif;">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" style="color: black;font-weight: bolder">To-Do_Lists</a>
+            </div>
+            <style>
+                .allbtn {
+                    padding: 3px;
+                    border: 2px solid;
+                    border-radius: 30px;
+                    font-weight: bold;
+                    width: 100px;
+                    margin-right: 5px;
+                    text-align: center;
+                }
+                .addbtn {
+                    padding: 3px;
+                    border: 2px solid;                   
+                    font-weight: bold;
+                    width: 100px;
+                    margin-right: 5px; 
+                    
+                }
+            </style>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="navbar-btn btn-sm btn-default allbtn">
+                        @Html.ActionLink("Active   ", "Index", "Home", new { @class = "nav-link icon", style = "display:inline;color: black;padding-right:1px" })
+                        <i class="fa fa-circle" style="font-size:8px;color:greenyellow;padding-right:4px"></i>
+                    </li>
+                    <li class="navbar-btn btn-sm btn-default allbtn">
+                        @Html.ActionLink("Completed", "Completed", "Home", new { @class = "nav-link icon", style = "display:inline;color: black;padding-right:1px" })
+                        <i class="fa fa-circle" style="font-size:8px;color:gold;padding-right:4px"></i>
+                    </li>
+                    <li class="navbar-btn btn-sm btn-default allbtn">
+                        @Html.ActionLink("Expired ", "Expired", "Home", new { @class = "nav-link icon", style = "display:inline;color: black;padding-right:1px" })
+                        <i class="fa fa-circle" style="font-size:8px;color:red;padding-right:4px"></i>
+                    </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="navbar-btn btn-sm btn-default addbtn">
+                        <i class="fa fa-plus" style="padding-left: 6px;padding-top:5px"></i>
+                        @Html.ActionLink("AddTask ", "AddTask", "Home", new { @class = "nav-link icon", style = "display:inline;color: black;padding-right:5px" })
+
+                    </li>
+
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - SANJIED</p>
+        </footer>
+    </div>
+
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

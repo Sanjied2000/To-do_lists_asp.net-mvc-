@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Completed";
+}
+
+<link href="~/cdn.datatables.net_1.13.6_css_jquery.dataTables.min.css" rel="stylesheet" />
+
+<h1>Completed Tasks</h1>
+
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>#  Title</th>
+            <th>Add Date</th>
+            <th>Expire Date</th>
+            <th>Complete Date</th>
+            <th>Activites</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+
+        <tr>
+            <td>@task.Title</td>
+            <td>@task.AddDate.ToString("yyyy-MM-dd")</td>
+            <td>@task.ExpireDate.ToString("yyyy-MM-dd")</td>
+            <td>@(task.CompDate != null ? task.CompDate.ToString("yyyy-MM-dd") : "")</td>
+
+
+
+
+            <td>
+                @{
+                    string returnUrl = Url.Action("Completed", "Home");
+                }
+                <a class='btn btn-sm btn-danger text-light' , style='margin-left:1px' data-toggle='tooltip' title='Book details' href='@Url.Action("Delete", "Home",new{returnUrl, @task.TaskId})'> <span class="glyphicon glyphicon-remove"></span></a>
+            </td>
+        </tr>
+
+        }
+    </tbody>
+
+
+</table>
+<style>
+
+    #example thead th:nth-child(1):before,
+    #example thead th:nth-child(1):after {
+        display: none !important;
+    }
+</style>
+<script src="~/code.jquery.com_jquery-3.7.0.js"></script>
+<script src="~/cdn.datatables.net_1.13.6_js_jquery.dataTables.min.js"></script>
+<script>
+    new DataTable('#example', {
+        info: false,
+        "columnDefs": [
+            { "orderable": false, "targets": 0 }
+        ]
+    });
+</script>
+

@@ -1,0 +1,48 @@
+﻿@model TDL.Models.taskTable
+@{
+    ViewBag.Title = "AddTask";
+}
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+<style>
+    .agbtn {
+        padding: 3px;
+        border: 2px solid;
+        font-weight: bold;
+        width: 100px;
+    }
+</style>
+<h2>AddTask</h2>
+
+@using (Html.BeginForm("AddingTask", "Home", FormMethod.Post))
+{
+    <div>
+        <label for="Title">Title:</label>
+        <input type="text" name="tasktitle" autocomplete="off"/><br />
+    </div>
+    <div style="margin-bottom:300px">
+        <label for="ExpiryDate">Expiry Date:</label>
+        <input type="text" name="expdate" class="datePicker" autocomplete="off"/><br />
+       
+    </div>
+    <div>
+        <input type="submit" value="AddTask" class="btn btn-default agbtn text-light" style="margin-left: 1px" />
+    </div>
+}
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.13.2.min.js"></script>
+    <script>
+        $(function () {
+            $(".datePicker").datepicker({
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+
+    </script>
+
+
+
+
+}
+
+
